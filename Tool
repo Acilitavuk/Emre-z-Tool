@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+# Colors
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+BLUE = "\033[94m"
+RESET = "\033[0m"
+
+def banner():
+    print(f"""{GREEN}
+    ███████╗███╗   ███╗██████╗ ███████╗███████╗
+    ██╔════╝████╗ ████║██╔══██╗██╔════╝╚════██║
+    █████╗  ██╔████╔██║██████╔╝█████╗      ██╔╝
+    ██╔══╝  ██║╚██╔╝██║██╔═══╝ ██╔══╝     ██╔╝
+    ███████╗██║ ╚═╝ ██║██║     ███████╗   ██║
+    ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝   ╚═╝
+    {RESET}{YELLOW}~ Emre-z-Tool (Nmap + SQLmap) ~{RESET}
+    {RED}** FOR AUTHORIZED PENETRATION TESTING ONLY **{RESET}
+    """)
+
+def menu():
+    print(f"""
+    {BLUE}[1]{RESET} Nmap Port Scan
+    {BLUE}[2]{RESET} SQL Injection Test
+    {BLUE}[3]{RESET} Exit
+    """)
+
+def nmap_scan():
+    target = input(f"{YELLOW}[?] Target IP/Domain: {RESET}")
+    print(f"{GREEN}[+] Scanning {target} with Nmap...{RESET}")
+    os.system(f"nmap -sV -A -T4 {target}")
+
+def sqlmap_test():
+    url = input(f"{YELLOW}[?] Vulnerable URL (e.g., http://test.com?id=1): {RESET}")
+    print(f"{GREEN}[+] Running SQLmap (use '--wizard' for interactive mode)...{RESET}")
+    os.system(f"sqlmap -u {url} --batch --crawl=10")
+
+def main():
+    banner()
+    while True:
+        menu()
+        choice = input(f"{YELLOW}[?] Select option (1-3): {RESET}").strip()
+        if choice == "1":
+            nmap_scan()
+        elif choice == "2":
+            sqlmap_test()
+        elif choice == "3":
+            print(f"{RED}[!] Exiting...{RESET}")
+            sys.exit()
+        else:
+            print(f"{RED}[!] Invalid choice!{RESET}")
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print(f"\n{RED}[!] Stopped by user.{RESET}")
+        sys.exit()
