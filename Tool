@@ -14,11 +14,11 @@ def banner():
     ███████╗███╗   ███╗██████╗ ███████╗███████╗
     ██╔════╝████╗ ████║██╔══██╗██╔════╝╚════██║
     █████╗  ██╔████╔██║██████╔╝█████╗      ██╔╝
-    ██╔══╝  ██║╚██╔╝██║██╔═══╝ ██╔══╝     ██╔╝
-    ███████╗██║ ╚═╝ ██║██║     ███████╗   ██║
-    ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝   ╚═╝
-    {RESET}{YELLOW}~ Emre-z-Tool (Nmap + SQLmap) ~{RESET}
-    {RED}** FOR AUTHORIZED PENETRATION TESTING ONLY **{RESET}
+    ██╔══╝  ██║╚██╔╝██║██╔══██╗██╔══╝     ██╔╝
+    ███████╗██║ ╚═╝ ██║██║  ██║███████╗   ██║
+    ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝
+    {RESET}{YELLOW}~ Emre-Z PenTest Toolkit (Nmap + SQLmap) ~{RESET}
+    {RED}** FOR AUTHORIZED TESTING ONLY **{RESET}
     """)
 
 def menu():
@@ -30,12 +30,12 @@ def menu():
 
 def nmap_scan():
     target = input(f"{YELLOW}[?] Target IP/Domain: {RESET}")
-    print(f"{GREEN}[+] Scanning {target} with Nmap...{RESET}")
+    print(f"{GREEN}[+] Scanning {target}...{RESET}")
     os.system(f"nmap -sV -A -T4 {target}")
 
 def sqlmap_test():
     url = input(f"{YELLOW}[?] Vulnerable URL (e.g., http://test.com?id=1): {RESET}")
-    print(f"{GREEN}[+] Running SQLmap (use '--wizard' for interactive mode)...{RESET}")
+    print(f"{GREEN}[+] Running SQLmap...{RESET}")
     os.system(f"sqlmap -u {url} --batch --crawl=10")
 
 def main():
