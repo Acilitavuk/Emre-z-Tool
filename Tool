@@ -1,61 +1,623 @@
-#!/usr/bin/env python3
-import os
-import sys
+       180106b75 48 8d 0d        LEA        RCX,[s_CBaseEntityList::AddNonNetworkab_180434   = "CBaseEntityList::AddNonNetwor
+                 5c e1 32 00
 
-# Colors
-RED = "\033[91m"
-GREEN = "\033[92m"
-YELLOW = "\033[93m"
-BLUE = "\033[94m"
-RESET = "\033[0m"
+undefined4 * FUN_180106b60(longlong param_1,undefined4 *param_2,undefined8 param_3)
 
-def banner():
-    print(f"""{GREEN}
-    ███████╗███╗   ███╗██████╗ ███████╗███████╗
-    ██╔════╝████╗ ████║██╔══██╗██╔════╝╚════██║
-    █████╗  ██╔████╔██║██████╔╝█████╗      ██╔╝
-    ██╔══╝  ██║╚██╔╝██║██╔══██╗██╔══╝     ██╔╝
-    ███████╗██║ ╚═╝ ██║██║  ██║███████╗   ██║
-    ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝
-    {RESET}{YELLOW}~ Emre-Z PenTest Toolkit (Nmap + SQLmap) ~{RESET}
-    {RED}** FOR AUTHORIZED TESTING ONLY **{RESET}
-    """)
+{
+  longlong lVar1;
+  longlong lVar2;
+  
+  lVar1 = *(longlong *)(param_1 + 0x40018);
+  if (lVar1 == 0) {
+    Warning("CBaseEntityList::AddNonNetworkableEntity: no free slots!\n");
+    *param_2 = 0xffffffff;
+    return param_2;
+  }
+  lVar2 = *(longlong *)(lVar1 + 0x10);
+  if (lVar2 != lVar1) {
+    if (lVar2 == 0) {
+      *(undefined8 *)(param_1 + 0x40018) = *(undefined8 *)(lVar1 + 0x18);
+    }
+    else {
+      *(undefined8 *)(lVar2 + 0x18) = *(undefined8 *)(lVar1 + 0x18);
+    }
+    if (*(longlong *)(lVar1 + 0x18) == 0) {
+      *(undefined8 *)(param_1 + 0x40020) = *(undefined8 *)(lVar1 + 0x10);
+    }
+    else {
+      *(undefined8 *)(*(longlong *)(lVar1 + 0x18) + 0x10) = *(undefined8 *)(lVar1 + 0x10);
+    }
+    *(longlong *)(lVar1 + 0x18) = lVar1;
+    *(longlong *)(lVar1 + 0x10) = lVar1;
+  }
+  FUN_180106a40(param_1,param_2,param_3,(lVar1 - param_1) + -8 >> 5,0xffffffff);
+  return param_2;
+}
+                             s_cam_idealdist_18044cd60                       XREF[1]:     FUN_1800102d0:1800102e1(*)  
+       18044cd60 63 61 6d        ds         "cam_idealdist"
+                 5f 69 64 
+                 65 61 6c 
+       18044cd6e 00              ??         00h
+       18044cd6f 00              ??         00h
+                             s_cam_idealdistright_18044cd70                  XREF[1]:     FUN_180010310:180010321(*)  
+       18044cd70 63 61 6d        ds         "cam_idealdistright"
+                 5f 69 64 
+                 65 61 6c 
+       18044cd83 00              ??         00h
+       18044cd84 00              ??         00h
+       18044cd85 00              ??         00h
+       18044cd86 00              ??         00h
+       18044cd87 00              ??         00h
+                             s_cam_idealdistup_18044cd88                     XREF[1]:     FUN_180010350:180010361(*)  
+       18044cd88 63 61 6d        ds         "cam_idealdistup"
+                 5f 69 64 
+                 65 61 6c 
+       18044cd98 00              ??         00h
+       18044cd99 00              ??         00h
+       18044cd9a 00              ??         00h
+       18044cd9b 00              ??         00h
+       18044cd9c 00              ??         00h
+       18044cd9d 00              ??         00h
+       18044cd9e 00              ??         00h
+       18044cd9f 00              ??         00h
+                             s_When_in_thirdperson_and_cam_coll_18044cda0    XREF[2]:     FUN_180010210:180010214(*), 
+                                                                                          FUN_180010210:180010228(*)  
+       18044cda0 57 68 65        ds         "When in thirdperson and cam_collision is set 
+                 6e 20 69 
+                 6e 20 74 
+       18044ce14 00              ??         00h
+       18044ce15 00              ??         00h
+       18044ce16 00              ??         00h
+       18044ce17 00              ??         00h
+                             s_cam_collision_18044ce18                       XREF[1]:     FUN_180010210:18001022d(*)  
+       18044ce18 63 61 6d        ds         "cam_collision"
+                 5f 63 6f 
+                 6c 6c 69 
+       18044ce26 00              ??         00h
+       18044ce27 00              ??         00h
+       18044ce28 00              ??         00h
+       18044ce29 00              ??         00h
+       18044ce2a 00              ??         00h
+       18044ce2b 00              ??         00h
+       18044ce2c 00              ??         00h
+       18044ce2d 00              ??         00h
+       18044ce2e 00              ??         00h
+       18044ce2f 00              ??         00h
+                             s_When_in_thirdperson,_print_viewa_18044ce30    XREF[2]:     FUN_180010450:180010454(*), 
+                                                                                          FUN_180010450:180010468(*)  
+       18044ce30 57 68 65        ds         "When in thirdperson, print viewangles/idealan
+                 6e 20 69 
+                 6e 20 74 
+                             s_cam_showangles_18044ce80                      XREF[1]:     FUN_180010450:18001046d(*)  
+       18044ce80 63 61 6d        ds         "cam_showangles"
+                 5f 73 68 
+                 6f 77 61 
+       18044ce8f 00              ??         00h
+                             s_c_maxpitch_18044ce90                          XREF[1]:     FUN_180010050:180010061(*)  
+       18044ce90 63 5f 6d        ds         "c_maxpitch"
+                 61 78 70 
+                 69 74 63 
+       18044ce9b 00              ??         00h
+       18044ce9c 00              ??         00h
+       18044ce9d 00              ??         00h
+       18044ce9e 00              ??         00h
+       18044ce9f 00              ??         00h
+                             s_c_minpitch_18044cea0                          XREF[1]:     FUN_180010110:180010121(*)  
+       18044cea0 63 5f 6d        ds         "c_minpitch"
+                 69 6e 70 
+                 69 74 63 
+       18044ceab 00              ??         00h
+       18044ceac 00              ??         00h
+       18044cead 00              ??         00h
+       18044ceae 00              ??         00h
+       18044ceaf 00              ??         00h
+                             s_c_maxyaw_18044ceb0                            XREF[1]:     FUN_180010090:1800100a1(*)  
+       18044ceb0 63 5f 6d        ds         "c_maxyaw"
+                 61 78 79 
+                 61 77 00
+       18044ceb9 00              ??         00h
+       18044ceba 00              ??         00h
+       18044cebb 00              ??         00h
+                             DAT_18044cebc                                   XREF[1]:     FUN_180010150:18001015a(*)  
+       18044cebc 2d              ??         2Dh    -
+       18044cebd 31              ??         31h    1
+       18044cebe 33              ??         33h    3
+       18044cebf 35              ??         35h    5
+       18044cec0 00              ??         00h
+       18044cec1 00              ??         00h
+       18044cec2 00              ??         00h
+       18044cec3 00              ??         00h
+       18044cec4 00              ??         00h
+       18044cec5 00              ??         00h
+       18044cec6 00              ??         00h
+       18044cec7 00              ??         00h
+                             s_c_minyaw_18044cec8                            XREF[1]:     FUN_180010150:180010161(*)  
+       18044cec8 63 5f 6d        ds         "c_minyaw"
+                 69 6e 79 
+                 61 77 00
+       18044ced1 00              ??         00h
+       18044ced2 00              ??         00h
+       18044ced3 00              ??         00h
+       18044ced4 00              ??         00h
+       18044ced5 00              ??         00h
+       18044ced6 00              ??         00h
+       18044ced7 00              ??         00h
+                             s_c_maxdistance_18044ced8                       XREF[1]:     FUN_180010010:180010021(*)  
+       18044ced8 63 5f 6d        ds         "c_maxdistance"
+                 61 78 64 
+                 69 73 74 
+       18044cee6 00              ??         00h
+       18044cee7 00              ??         00h
+                             s_c_mindistance_18044cee8                       XREF[1]:     FUN_1800100d0:1800100e1(*)  
+       18044cee8 63 5f 6d        ds         "c_mindistance"
+                 69 6e 64 
+                 69 73 74 
+       18044cef6 00              ??         00h
+       18044cef7 00              ??         00h
+                             s_c_orthowidth_18044cef8                        XREF[1]:     FUN_1800101d0:1800101e1(*)  
+       18044cef8 63 5f 6f        ds         "c_orthowidth"
+                 72 74 68 
+                 6f 77 69 
+       18044cf05 00              ??         00h
+       18044cf06 00              ??         00h
+       18044cf07 00              ??         00h
+                             s_c_orthoheight_18044cf08                       XREF[1]:     FUN_180010190:1800101a1(*)  
+       18044cf08 63 5f 6f        ds         "c_orthoheight"
+                 72 74 68 
+                 6f 68 65 
+       18044cf16 00              ??         00h
+       18044cf17 00              ??         00h
+                             s_+campitchup_18044cf18                         XREF[1]:     FUN_180010960:180010972(*)  
+       18044cf18 2b 63 61        ds         "+campitchup"
+                 6d 70 69 
+                 74 63 68 
+       18044cf24 00              ??         00h
+       18044cf25 00              ??         00h
+       18044cf26 00              ??         00h
+       18044cf27 00              ??         00h
+                             s_-campitchup_18044cf28                         XREF[1]:     FUN_1800106e0:1800106f2(*)  
+       18044cf28 2d 63 61        ds         "-campitchup"
+                 6d 70 69 
+                 74 63 68 
+       18044cf34 00              ??         00h
+       18044cf35 00              ??         00h
+       18044cf36 00              ??         00h
+       18044cf37 00              ??         00h
+                             s_+campitchdown_18044cf38                       XREF[1]:     FUN_180010920:180010932(*)  
+       18044cf38 2b 63 61        ds         "+campitchdown"
+                 6d 70 69 
+                 74 63 68 
+       18044cf46 00              ??         00h
+       18044cf47 00              ??         00h
+                             s_-campitchdown_18044cf48                       XREF[1]:     FUN_1800106a0:1800106b2(*)  
+       18044cf48 2d 63 61        ds         "-campitchdown"
+                 6d 70 69 
+                 74 63 68 
+       18044cf56 00              ??         00h
+       18044cf57 00              ??         00h
+                             s_+camyawleft_18044cf58                         XREF[1]:     FUN_1800108a0:1800108b2(*)  
+       18044cf58 2b 63 61        ds         "+camyawleft"
+                 6d 79 61 
+                 77 6c 65 
+       18044cf64 00              ??         00h
+       18044cf65 00              ??         00h
+       18044cf66 00              ??         00h
+       18044cf67 00              ??         00h
+                             s_-camyawleft_18044cf68                         XREF[1]:     FUN_180010620:180010632(*)  
+       18044cf68 2d 63 61        ds         "-camyawleft"
+                 6d 79 61 
+                 77 6c 65 
+       18044cf74 00              ??         00h
+       18044cf75 00              ??         00h
+       18044cf76 00              ??         00h
+       18044cf77 00              ??         00h
+                             s_+camyawright_18044cf78                        XREF[1]:     FUN_1800108e0:1800108f2(*)  
+       18044cf78 2b 63 61        ds         "+camyawright"
+                 6d 79 61 
+                 77 72 69 
+       18044cf85 00              ??         00h
+       18044cf86 00              ??         00h
+       18044cf87 00              ??         00h
+                             s_-camyawright_18044cf88                        XREF[1]:     FUN_180010660:180010672(*)  
+       18044cf88 2d 63 61        ds         "-camyawright"
+                 6d 79 61 
+                 77 72 69 
+       18044cf95 00              ??         00h
+       18044cf96 00              ??         00h
+       18044cf97 00              ??         00h
+                             s_+camin_18044cf98                              XREF[1]:     FUN_1800107e0:1800107f2(*)  
+       18044cf98 2b 63 61        ds         "+camin"
+                 6d 69 6e 00
+       18044cf9f 00              ??         00h
+                             s_-camin_18044cfa0                              XREF[1]:     FUN_1800105a0:1800105b2(*)  
+       18044cfa0 2d 63 61        ds         "-camin"
+                 6d 69 6e 00
+       18044cfa7 00              ??         00h
+                             s_+camout_18044cfa8                             XREF[1]:     FUN_180010860:180010872(*)  
+       18044cfa8 2b 63 61        ds         "+camout"
+                 6d 6f 75 
+                 74 00
+                             s_-camout_18044cfb0                             XREF[1]:     FUN_180010520:180010532(*)  
+       18044cfb0 2d 63 61        ds         "-camout"
+                 6d 6f 75 
+                 74 00
+                             s_Switch_to_thirdperson_Maya-like_c_18044cfb8   XREF[1]:     FUN_1800109f0:1800109fd(*)  
+       18044cfb8 53 77 69        ds         "Switch to thirdperson Maya-like camera contro
+                 74 63 68 
+                 20 74 6f 
+       18044cfe9 00              ??         00h
+       18044cfea 00              ??         00h
+       18044cfeb 00              ??         00h
+       18044cfec 00              ??         00h
+       18044cfed 00              ??         00h
+       18044cfee 00              ??         00h
+       18044cfef 00              ??         00h
+                             s_thirdperson_mayamode_18044cff0                XREF[1]:     FUN_1800109f0:180010a13(*)  
+       18044cff0 74 68 69        ds         "thirdperson_mayamode"
+                 72 64 70 
+                 65 72 73 
+       18044d005 00              ??         00h
+       18044d006 00              ??         00h
+       18044d007 00              ??         00h
+                             s_Switch_to_thirdperson_camera._18044d008       XREF[1]:     FUN_1800109a0:1800109ad(*)  
+       18044d008 53 77 69        ds         "Switch to thirdperson camera."
+                 74 63 68 
+                 20 74 6f 
+       18044d026 00              ??         00h
+       18044d027 00              ??         00h
+                             s_thirdperson_18044d028                         XREF[1]:     FUN_1800109a0:1800109c3(*)  
+       18044d028 74 68 69        ds         "thirdperson"
+                 72 64 70 
+                 65 72 73 
+       18044d034 00              ??         00h
+       18044d035 00              ??         00h
+       18044d036 00              ??         00h
+       18044d037 00              ??         00h
+                             s_Switch_to_firstperson_camera._18044d038       XREF[1]:     FUN_180010720:180010726(*)  
+       18044d038 53 77 69        ds         "Switch to firstperson camera."
+                 74 63 68 
+                 20 74 6f 
+       18044d056 00              ??         00h
+       18044d057 00              ??         00h
+                             s_firstperson_18044d058                         XREF[1]:     FUN_180010720:180010739(*)  
+       18044d058 66 69 72        ds         "firstperson"
+                 73 74 70 
+                 65 72 73 
+       18044d064 00              ??         00h
+       18044d065 00              ??         00h
+       18044d066 00              ??         00h
+       18044d067 00              ??         00h
+                             s_Switch_to_orthographic_camera._18044d068      XREF[1]:     FUN_1800104d0:1800104dd(*)  
+       18044d068 53 77 69        ds         "Switch to orthographic camera."
+                 74 63 68 
+                 20 74 6f 
+       18044d087 00              ??         00h
+                             s_camortho_18044d088                            XREF[1]:     FUN_1800104d0:1800104f3(*)  
+       18044d088 63 61 6d        ds         "camortho"
+                 6f 72 74 
+                 68 6f 00
+       18044d091 00              ??         00h
+       18044d092 00              ??         00h
+       18044d093 00              ??         00h
+       18044d094 00              ??         00h
+       18044d095 00              ??         00h
+       18044d096 00              ??         00h
+       18044d097 00              ??         00h
+                             s_+cammousemove_18044d098                       XREF[1]:     FUN_180010820:180010832(*)  
+       18044d098 2b 63 61        ds         "+cammousemove"
+                 6d 6d 6f 
+                 75 73 65 
+       18044d0a6 00              ??         00h
+       18044d0a7 00              ??         00h
+                             s_-cammousemove_18044d0a8                       XREF[1]:     FUN_1800105e0:1800105f2(*)  
+       18044d0a8 2d 63 61        ds         "-cammousemove"
+                 6d 6d 6f 
+                 75 73 65 
+       18044d0b6 00              ??         00h
+       18044d0b7 00              ??         00h
+                             s_+camdistance_18044d0b8                        XREF[1]:     FUN_1800107a0:1800107b2(*)  
+       18044d0b8 2b 63 61        ds         "+camdistance"
+                 6d 64 69 
+                 73 74 61 
+       18044d0c5 00              ??         00h
+       18044d0c6 00              ??         00h
+       18044d0c7 00              ??         00h
+                             s_-camdistance_18044d0c8                        XREF[1]:     FUN_180010560:180010572(*)  
+       18044d0c8 2d 63 61        ds         "-camdistance"
+                 6d 64 69 
+                 73 74 61 
+       18044d0d5 00              ??         00h
+       18044d0d6 00              ??         00h
+       18044d0d7 00              ??         00h
+                             s_snapto_18044d0d8                              XREF[1]:     FUN_180010760:180010772(*)  
+       18044d0d8 73 6e 61        ds         "snapto"
+                 70 74 6f 00
+       18044d0df 00              ??         00h
+                             s_view_angles_18044d0e0                         XREF[2]:     FUN_18014f1e0:18014fafc(*), 
+                                                                                          FUN_18014f1e0:18014fb03(*)  
+       18044d0e0 76 69 65        ds         "view angles"
+                 77 20 61 
+                 6e 67 6c 
+       18044d0ec 00              ??         00h
+       18044d0ed 00              ??         00h
+       18044d0ee 00              ??         00h
+       18044d0ef 00              ??         00h
 
-def menu():
-    print(f"""
-    {BLUE}[1]{RESET} Nmap Port Scan
-    {BLUE}[2]{RESET} SQL Injection Test
-    {BLUE}[3]{RESET} Exit
-    """)
+undefined4 * FUN_180106b60(longlong param_1,undefined4 *param_2,undefined8 param_3)
 
-def nmap_scan():
-    target = input(f"{YELLOW}[?] Target IP/Domain: {RESET}")
-    print(f"{GREEN}[+] Scanning {target}...{RESET}")
-    os.system(f"nmap -sV -A -T4 {target}")
+{
+  longlong lVar1;
+  longlong lVar2;
+  
+  lVar1 = *(longlong *)(param_1 + 0x40018);
+  if (lVar1 == 0) {
+    Warning("CBaseEntityList::AddNonNetworkableEntity: no free slots!\n");
+    *param_2 = 0xffffffff;
+    return param_2;
+  }
+  lVar2 = *(longlong *)(lVar1 + 0x10);
+  if (lVar2 != lVar1) {
+    if (lVar2 == 0) {
+      *(undefined8 *)(param_1 + 0x40018) = *(undefined8 *)(lVar1 + 0x18);
+    }
+    else {
+      *(undefined8 *)(lVar2 + 0x18) = *(undefined8 *)(lVar1 + 0x18);
+    }
+    if (*(longlong *)(lVar1 + 0x18) == 0) {
+      *(undefined8 *)(param_1 + 0x40020) = *(undefined8 *)(lVar1 + 0x10);
+    }
+    else {
+      *(undefined8 *)(*(longlong *)(lVar1 + 0x18) + 0x10) = *(undefined8 *)(lVar1 + 0x10);
+    }
+    *(longlong *)(lVar1 + 0x18) = lVar1;
+    *(longlong *)(lVar1 + 0x10) = lVar1;
+  }
+  FUN_180106a40(param_1,param_2,param_3,(lVar1 - param_1) + -8 >> 5,0xffffffff);
+  return param_2;
+}
+       1801e9851 48 8d 15        LEA        RDX,[s_m_angEyeAngles[0]_180472828]              = "m_angEyeAngles[0]"
+                 d0 8f 28 00
 
-def sqlmap_test():
-    url = input(f"{YELLOW}[?] Vulnerable URL (e.g., http://test.com?id=1): {RESET}")
-    print(f"{GREEN}[+] Running SQLmap...{RESET}")
-    os.system(f"sqlmap -u {url} --batch --crawl=10")
+undefined8 FUN_1801e95f0(void)
 
-def main():
-    banner()
-    while True:
-        menu()
-        choice = input(f"{YELLOW}[?] Select option (1-3): {RESET}").strip()
-        if choice == "1":
-            nmap_scan()
-        elif choice == "2":
-            sqlmap_test()
-        elif choice == "3":
-            print(f"{RED}[!] Exiting...{RESET}")
-            sys.exit()
-        else:
-            print(f"{RED}[!] Invalid choice!{RESET}")
+{
+  ulonglong in_stack_ffffffffffffffe8;
+  undefined *puVar1;
+  ulonglong uVar2;
+  code *pcVar3;
+  
+  if ((DAT_18068bb20 & 1) == 0) {
+    DAT_18068bb20 = DAT_18068bb20 | 1;
+    FUN_1801053b0(&DAT_18068aec0,"should_never_see_this",0,4,
+                  in_stack_ffffffffffffffe8 & 0xffffffff00000000,0);
+    FUN_180105310(&DAT_18068af20,"baseclass",0,0,PTR_DAT_1805a76d8,&LAB_1801050c0);
+    FUN_180105310(&DAT_18068af80,"cslocaldata",0,0,&DAT_18068a430,&LAB_1801050c0);
+    puVar1 = &DAT_18068a460;
+    FUN_180105310(&DAT_18068afe0,"csnonlocaldata",0,0,&DAT_18068a460,&LAB_1801050c0);
+    uVar2 = (ulonglong)puVar1 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b040,"m_iAddonBits",0x1a18,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b0a0,"m_iPrimaryAddon",0x1a1c,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b100,"m_iSecondaryAddon",0x1a20,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b160,"m_iThrowGrenadeCounter",0x1a14,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b1c0,"m_iPlayerState",0x1a0c,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b220,"m_iAccount",0x1a98,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b280,"m_bInBombZone",0x1a11,1,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b2e0,"m_bInBuyZone",0x1a12,1,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b340,"m_iClass",0x1aa0,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b3a0,"m_ArmorValue",0x1aa4,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_18068b400,"m_angEyeAngles[0]",0x1aa8,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_18068b460,"m_angEyeAngles[1]",0x1aac,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_18068b4c0,"m_flStamina",0x1a2c,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b520,"m_bHasDefuser",0x1ab4,1,uVar2,FUN_1801ed710);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b580,"m_bNightVisionOn",0x1a38,1,uVar2,&LAB_1801ed790);
+    FUN_180196a70(&DAT_18068b5e0,"m_bHasNightVision",0x1a39,1);
+    FUN_180196a70(&DAT_18068b640,"m_bInHostageRescueZone",0x1ab5,1);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b6a0,"m_ArmorValue",0x1aa4,4,uVar2,0);
+    FUN_180196a70(&DAT_18068b700,"m_bIsDefusing",0x1a10,1);
+    FUN_180196a70(&DAT_18068b760,"m_bResumeZoom",0x1a04,1);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b7c0,"m_iLastZoom",0x1a08,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b820,"m_bHasHelmet",0x1a9c,1,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_18068b880,"m_vecRagdollVelocity",0x1ac0,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_18068b8e0,"m_flFlashDuration",0x1a58,4,uVar2,FUN_1801ed680);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_18068b940,"m_flFlashMaxAlpha",0x1a54,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_18068b9a0,"m_iProgressBarDuration",0x1a24,4,uVar2,0);
+    FUN_180105360(&DAT_18068ba00,"m_flProgressBarStartTime",0x1a28,4,uVar2 & 0xffffffff00000000,
+                  FUN_1801054e0);
+    pcVar3 = FUN_180196ba0;
+    FUN_180196ad0(&DAT_18068ba60,"m_hRagdoll",0x1a44,4,FUN_180196ba0);
+    FUN_1801053b0(&DAT_18068bac0,"m_cycleLatch",0x1bc4,4,(ulonglong)pcVar3 & 0xffffffff00000000,
+                  FUN_1801ed530);
+  }
+  FUN_1801050a0(&DAT_18068a488,&DAT_18068af20,0x20,"DT_CSPlayer");
+  return 1;
+}
 
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print(f"\n{RED}[!] Stopped by user.{RESET}")
-        sys.exit()
+       180273238 48 8d 15        LEA        RDX,[s_m_vecOrigin_1803fb5b8]                    = "m_vecOrigin"
+                 79 83 18 00
+
+undefined8 FUN_1802731a0(void)
+
+{
+  ulonglong in_stack_ffffffffffffffe8;
+  undefined *puVar1;
+  ulonglong uVar2;
+  
+  if ((DAT_1806a5ae0 & 1) == 0) {
+    DAT_1806a5ae0 = DAT_1806a5ae0 | 1;
+    FUN_1801053b0(&DAT_1806a5600,"should_never_see_this",0,4,
+                  in_stack_ffffffffffffffe8 & 0xffffffff00000000,0);
+    puVar1 = PTR_DAT_1805c2430;
+    FUN_180105310(&DAT_1806a5660,"baseclass",0,0,PTR_DAT_1805c2430,&LAB_1801050c0);
+    uVar2 = (ulonglong)puVar1 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a56c0,"m_vecOrigin",0x20,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5720,"m_angRotation[0]",0x2c,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5780,"m_angRotation[1]",0x30,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a57e0,"m_angRotation[2]",0x34,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a5840,"m_vecSize",0x38,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a58a0,"m_vecVelocity",0x44,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5900,"m_nModelIndex",0x54,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5960,"m_nRandomization",0x50,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a59c0,"m_nCount",0x58,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5a20,"m_fTime",0x5c,4,uVar2,FUN_1801054e0);
+    FUN_1801053b0(&DAT_1806a5a80,"m_nFlags",0x60,4,uVar2 & 0xffffffff00000000,0);
+  }
+  FUN_1801050a0(&DAT_1806a55c8,&DAT_1806a5660,0xc,"DT_TEBreakModel");
+  return 1;
+}
+       180273317 48 8d 15        LEA        RDX,[s_m_nModelIndex_1803fab70]                  = "m_nModelIndex"
+                 52 78 18 00
+
+undefined8 FUN_1802731a0(void)
+
+{
+  ulonglong in_stack_ffffffffffffffe8;
+  undefined *puVar1;
+  ulonglong uVar2;
+  
+  if ((DAT_1806a5ae0 & 1) == 0) {
+    DAT_1806a5ae0 = DAT_1806a5ae0 | 1;
+    FUN_1801053b0(&DAT_1806a5600,"should_never_see_this",0,4,
+                  in_stack_ffffffffffffffe8 & 0xffffffff00000000,0);
+    puVar1 = PTR_DAT_1805c2430;
+    FUN_180105310(&DAT_1806a5660,"baseclass",0,0,PTR_DAT_1805c2430,&LAB_1801050c0);
+    uVar2 = (ulonglong)puVar1 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a56c0,"m_vecOrigin",0x20,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5720,"m_angRotation[0]",0x2c,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5780,"m_angRotation[1]",0x30,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a57e0,"m_angRotation[2]",0x34,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a5840,"m_vecSize",0x38,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a58a0,"m_vecVelocity",0x44,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5900,"m_nModelIndex",0x54,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5960,"m_nRandomization",0x50,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a59c0,"m_nCount",0x58,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5a20,"m_fTime",0x5c,4,uVar2,FUN_1801054e0);
+    FUN_1801053b0(&DAT_1806a5a80,"m_nFlags",0x60,4,uVar2 & 0xffffffff00000000,0);
+  }
+  FUN_1801050a0(&DAT_1806a55c8,&DAT_1806a5660,0xc,"DT_TEBreakModel");
+  return 1;
+}
+                             s_m_iObserverMode_180405a00                     XREF[1]:     FUN_1800949b0:180094c8d(*)  
+       180405a00 6d 5f 69        ds         "m_iObserverMode"
+                 4f 62 73 
+                 65 72 76 
+
+
+undefined8 FUN_1802731a0(void)
+
+{
+  ulonglong in_stack_ffffffffffffffe8;
+  undefined *puVar1;
+  ulonglong uVar2;
+  
+  if ((DAT_1806a5ae0 & 1) == 0) {
+    DAT_1806a5ae0 = DAT_1806a5ae0 | 1;
+    FUN_1801053b0(&DAT_1806a5600,"should_never_see_this",0,4,
+                  in_stack_ffffffffffffffe8 & 0xffffffff00000000,0);
+    puVar1 = PTR_DAT_1805c2430;
+    FUN_180105310(&DAT_1806a5660,"baseclass",0,0,PTR_DAT_1805c2430,&LAB_1801050c0);
+    uVar2 = (ulonglong)puVar1 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a56c0,"m_vecOrigin",0x20,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5720,"m_angRotation[0]",0x2c,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5780,"m_angRotation[1]",0x30,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a57e0,"m_angRotation[2]",0x34,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a5840,"m_vecSize",0x38,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a58a0,"m_vecVelocity",0x44,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5900,"m_nModelIndex",0x54,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5960,"m_nRandomization",0x50,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a59c0,"m_nCount",0x58,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5a20,"m_fTime",0x5c,4,uVar2,FUN_1801054e0);
+    FUN_1801053b0(&DAT_1806a5a80,"m_nFlags",0x60,4,uVar2 & 0xffffffff00000000,0);
+  }
+  FUN_1801050a0(&DAT_1806a55c8,&DAT_1806a5660,0xc,"DT_TEBreakModel");
+  return 1;
+}                             s_m_iFOV_180405948                              XREF[1]:     FUN_1800949b0:180094a9a(*)  
+       180405948 6d 5f 69        ds         "m_iFOV"
+                 46 4f 56 00
+
+
+undefined8 FUN_1802731a0(void)
+
+{
+  ulonglong in_stack_ffffffffffffffe8;
+  undefined *puVar1;
+  ulonglong uVar2;
+  
+  if ((DAT_1806a5ae0 & 1) == 0) {
+    DAT_1806a5ae0 = DAT_1806a5ae0 | 1;
+    FUN_1801053b0(&DAT_1806a5600,"should_never_see_this",0,4,
+                  in_stack_ffffffffffffffe8 & 0xffffffff00000000,0);
+    puVar1 = PTR_DAT_1805c2430;
+    FUN_180105310(&DAT_1806a5660,"baseclass",0,0,PTR_DAT_1805c2430,&LAB_1801050c0);
+    uVar2 = (ulonglong)puVar1 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a56c0,"m_vecOrigin",0x20,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5720,"m_angRotation[0]",0x2c,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5780,"m_angRotation[1]",0x30,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a57e0,"m_angRotation[2]",0x34,4,uVar2,FUN_1801054e0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a5840,"m_vecSize",0x38,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105490(&DAT_1806a58a0,"m_vecVelocity",0x44,0xc,uVar2,&LAB_180105550);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5900,"m_nModelIndex",0x54,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a5960,"m_nRandomization",0x50,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_1801053b0(&DAT_1806a59c0,"m_nCount",0x58,4,uVar2,0);
+    uVar2 = uVar2 & 0xffffffff00000000;
+    FUN_180105360(&DAT_1806a5a20,"m_fTime",0x5c,4,uVar2,FUN_1801054e0);
+    FUN_1801053b0(&DAT_1806a5a80,"m_nFlags",0x60,4,uVar2 & 0xffffffff00000000,0);
+  }
+  FUN_1801050a0(&DAT_1806a55c8,&DAT_1806a5660,0xc,"DT_TEBreakModel");
+  return 1;
+}
